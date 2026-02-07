@@ -3,106 +3,70 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login | Teknisi Ponsel</title>
+<title>Register</title>
 
 <style>
 body{
     margin:0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg,#6a11cb,#2575fc);
+    font-family:Arial;
+    background:linear-gradient(135deg,#2575fc,#6a11cb);
     height:100vh;
     display:flex;
     align-items:center;
     justify-content:center;
 }
-
-.login-box{
+.box{
     background:#fff;
+    padding:25px;
     width:100%;
     max-width:360px;
-    padding:25px;
     border-radius:12px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.2);
 }
-
-.login-box h2{
-    text-align:center;
-    margin-bottom:10px;
-    color:#333;
-}
-
-.login-box p{
-    text-align:center;
-    font-size:14px;
-    color:#777;
-    margin-bottom:20px;
-}
-
-.login-box input{
+.box h2{text-align:center}
+.box input{
     width:100%;
     padding:12px;
-    margin-bottom:12px;
-    border-radius:8px;
-    border:1px solid #ccc;
-    font-size:14px;
+    margin:10px 0;
 }
-
-.login-box button{
+.box button{
     width:100%;
     padding:12px;
+    background:#2575fc;
+    color:#fff;
     border:none;
     border-radius:8px;
-    background:#6a11cb;
-    color:#fff;
-    font-size:16px;
-    cursor:pointer;
-}
-
-.login-box button:hover{
-    background:#5010a8;
-}
-
-.extra{
-    text-align:center;
-    margin-top:15px;
-    font-size:13px;
-}
-
-.extra a{
-    color:#2575fc;
-    text-decoration:none;
 }
 </style>
 </head>
 
 <body>
 
-<div class="login-box">
-    <h2>Login</h2>
-    <p>Silakan masuk ke akun Anda</p>
+<div class="box">
+    <h2>Daftar Akun</h2>
 
-    <input type="text" id="username" placeholder="Username">
-    <input type="password" id="password" placeholder="Password">
+    <input type="text" id="regUser" placeholder="Username">
+    <input type="password" id="regPass" placeholder="Password">
 
-    <button onclick="login()">Masuk</button>
-
-    <div class="extra">
-        <a href="#">Lupa password?</a>
-    </div>
+    <button onclick="register()">Daftar</button>
 </div>
 
 <script>
-function login(){
-    const user = document.getElementById("username").value;
-    const pass = document.getElementById("password").value;
+function register(){
+    const user = document.getElementById("regUser").value;
+    const pass = document.getElementById("regPass").value;
 
-    if(user === "admin" && pass === "1234"){
-        alert("Login berhasil!");
-        // pindah halaman
-        // window.location.href = "dashboard.html";
-    }else{
-        alert("Username atau password salah!");
+    if(user === "" || pass === ""){
+        alert("Lengkapi data!");
+        return;
     }
+
+    localStorage.setItem("akun", JSON.stringify({
+        user:user,
+        pass:pass
+    }));
+
+    alert("Akun berhasil dibuat, silakan login");
+    window.location.href = "index.html";
 }
 </script>
 
