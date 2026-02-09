@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Produk Jasa Teknisi</title>
+
+<style>
+body{
+  font-family: Arial, sans-serif;
+  background:#f4f6f8;
+  margin:0;
+  padding:15px;
+}
+h2{text-align:center}
+
+.list-produk{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:15px;
+}
+
+.produk{
+  background:#fff;
+  padding:15px;
+  border-radius:10px;
+  box-shadow:0 2px 6px rgba(0,0,0,.1);
+  text-align:center;
+  cursor:pointer;
+}
+
+.produk:hover{
+  background:#e9f2ff;
+}
+
+.detail{
+  display:none;
+  background:#fff;
+  margin-top:20px;
+  padding:15px;
+  border-radius:10px;
+}
+
+button{
+  background:#007bff;
+  color:#fff;
+  border:none;
+  padding:8px 14px;
+  border-radius:6px;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<h2>🔧 Produk Jasa Teknisi</h2>
+
+<div class="list-produk">
+  <div class="produk" onclick="showDetail('lcd')">Ganti LCD</div>
+  <div class="produk" onclick="showDetail('flash')">Flash Software</div>
+  <div class="produk" onclick="showDetail('cas')">Ganti Konektor Cas</div>
+  <div class="produk" onclick="showDetail('air')">Perbaikan Kena Air</div>
+</div>
+
+<div class="detail" id="detailBox"></div>
+
+<script>
+function showDetail(type){
+  let detail = document.getElementById("detailBox");
+  detail.style.display = "block";
+
+  if(type === "lcd"){
+    detail.innerHTML = `
+      <h3>Ganti LCD</h3>
+      <p>✔ Layar retak / blank</p>
+      <p>✔ Harga mulai Rp150.000</p>
+      <p>✔ Garansi pemasangan</p>
+      <button onclick="closeDetail()">Tutup</button>
+    `;
+  }
+
+  if(type === "flash"){
+    detail.innerHTML = `
+      <h3>Flash Software</h3>
+      <p>✔ Bootloop / lupa pola</p>
+      <p>✔ Install ulang sistem</p>
+      <p>✔ Harga mulai Rp50.000</p>
+      <button onclick="closeDetail()">Tutup</button>
+    `;
+  }
+
+  if(type === "cas"){
+    detail.innerHTML = `
+      <h3>Ganti Konektor Cas</h3>
+      <p>✔ Tidak bisa mengisi daya</p>
+      <p>✔ Cas harus dimiringkan</p>
+      <p>✔ Harga mulai Rp70.000</p>
+      <button onclick="closeDetail()">Tutup</button>
+    `;
+  }
+
+  if(type === "air"){
+    detail.innerHTML = `
+      <h3>Perbaikan HP Kena Air</h3>
+      <p>✔ Konslet / mati total</p>
+      <p>✔ Dibersihkan ultrasonic</p>
+      <p>✔ Harga tergantung kerusakan</p>
+      <button onclick="closeDetail()">Tutup</button>
+    `;
+  }
+}
+
+function closeDetail(){
+  document.getElementById("detailBox").style.display = "none";
+}
+</script>
+
+</body>
+</html>
