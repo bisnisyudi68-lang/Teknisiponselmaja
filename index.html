@@ -91,11 +91,11 @@ fetch(`https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?sheet=${encodeU
 const json=JSON.parse(t.substring(47).slice(0,-2));
 const rows=json.table.rows;
 
-// A=0 B=1 E=4 G=6
+// A=0 B=1 D=4 G=6
 window.dataProduk=rows.map(r=>({
 kode:r.c[0]?.v||"",
 nama:r.c[1]?.v||"",
-harga:r.c[4]?.v||"",
+harga:r.c[3]?.v||"",
 stok:r.c[6]?.v||""
 }));
 
